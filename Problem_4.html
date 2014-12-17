@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Problem 4</title>
+	<link rel="stylesheet" href="res/style.css">
+	<link rel="stylesheet" href="res/prism.css">
+	<script src="res/prism.js"></script>
+</head>
+<body>
+	<h1>Largest palindrome product</h1>
+	<div id="wrap">
+		<h2>Problem 4</h2>
+		<div class="problem">
+			<p>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.</p>
+			<p>Find the largest palindrome made from the product of two 3-digit numbers.</p>
+		</div>
+		<h2>Solution 1</h2>
+		<pre><code class="language-javascript">
+//这种算法效率极为低下
+var result = null;
+var resultArr = [];
+for(var l=9; l>0; l--){
+	for(var m=9; m>=0; m--){
+		for(var n=9; n>=0; n--){
+			for(x=9; x>0; x--){
+				for(y=9; y>=0; y--){
+					for(z=9; z>=0; z--){
+						result = '' + (l*100+m*10+n)*(x*100+y*10+z);
+						var arr = result.split('');
+						if(arr[0] == arr[5] && arr[1] == arr[4] && arr[2] == arr[3]){
+							resultArr.push(result);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+resultArr.sort(function(a,b){return b-a});
+console.log(resultArr);
+		</code></pre>
+	</div>
+</body>
+</html>
