@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Problem 3</title>
+	<link rel="stylesheet" href="res/style.css">
+	<link rel="stylesheet" href="res/prism.css">
+	<script src="res/prism.js"></script>
+</head>
+<body>
+	<h1>Largest prime factor</h1>
+	<div id="wrap">
+		<h2>Problem 3</h2>
+		<div class="problem">
+			<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+			<p>What is the largest prime factor of the number 600851475143 ?</p>
+		</div>
+		<h2>Solution 1</h2>
+		<pre><code class="language-javascript">
+var result = 600851475143;
+var arr = [];
+
+function isPrime(num){ //判断是否为素数
+	for(var i=2; i&lt;=Math.ceil(num/2);i++){
+		if(num%i == 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+for(var i=2; i&lt;=result; i++){
+	if((result%i == 0) && isPrime(i)){
+		arr.push(i);
+		result = result / i;
+	}
+}
+
+arr.sort(function(a,b){return b-a});
+console.log(arr[0]);			
+		</code></pre>
+		<h2>Solution 2</h2>
+		<pre><code class="language-javascript">
+var result = 600851475143;
+var factor = 2;
+var largestFactor = 1;
+while(result > 1){ //从小的因子开始除，一直除到不能再除，因子加1，然后继续检测
+	if(result%factor == 0){
+		largestFactor = factor;
+		result = result / factor;
+		while(result%factor == 0){
+			result = result / factor;
+		}
+	}
+	factor = factor + 1;
+}
+console.log(largestFactor);
+		</code></pre>
+		<h2>Solution 3</h2>
+		<pre><code class="language-javascript">
+var result = 600851475143;
+var largestFactor = 1;
+var factor = 3;
+
+//由于2是最小的偶数素数，因此完全可以让因子两个两个的加，但是首先要把2都先除尽
+if(result%2 == 0){
+	result = result/2;
+	largestFactor = 2;
+	while(result%2 == 0){
+		result = result/2;
+	}
+}
+
+while(result > 1){
+	if(result%factor == 0){
+		result = result / factor;
+		largestFactor = factor;
+		while(result%factor == 0){
+			result = result / factor;
+		}
+	}
+	factor = factor + 2; //这里两个两个的加
+}
+
+console.log(largestFactor);
+		</code></pre>
+		<h2>Solution 4</h2>
+		<pre><code class="language-javascript">
+var result = 600851475143;
+var largestFactor = 1;
+var factor = 3;
+var maxFactor = 1; //一个数至多只能有一个大于其平方根的最大因子
+
+//由于2是最小的偶数素数，因此完全可以让因子两个两个的加，但是首先要把2都先除尽
+if(result%2 == 0){
+	result = result/2;
+	largestFactor = 2;
+	while(result%2 == 0){
+		result = result/2;
+	}
+}
+maxFactor = Math.sqrt(result);
+while(result>1 && largestFactor&lt;=maxFactor){
+	if(result%factor == 0){
+		result = result / factor;
+		largestFactor = factor;
+		while(result%factor == 0){
+			result = result / factor;
+		}
+		maxFactor = Math.sqrt(result);
+	}
+	factor = factor + 2; //这里两个两个的加
+}
+
+if(result == 1){
+	console.log(largestFactor);
+} else {
+	console.log(result); //小于result平方根的因子都已经除掉了，如果有一个因子大于result的平方根，那么它肯定是素数，而且肯定是最大的因子
+}
+		</code></pre>
+	</div>
+</body>
+</html>
