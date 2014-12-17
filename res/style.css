@@ -1,6 +1,9 @@
 html, body {margin: 0; padding: 0;}
-h1 {width: 800px; margin: 50px auto;}
+h1 {width: 800px; margin: 50px auto; font-family: 'calibri';}
 #wrap {width: 800px; margin: 0 auto;}
+ul {width: 800px; margin: 0 auto; font: 24px/34px calibri;}
+a {display: block; text-decoration: none; color: #00AAAA; transition: all 0.2s linear;}
+a:hover {color: #CB219C;}
 .problem {border: 1px solid #000; padding: 10px;}
 .problem p {margin: 0; padding: 0; margin-bottom: 20px; font: 24px/30px calibri;}
 .problem p:last-child {margin-bottom: 0;}
