@@ -40,6 +40,158 @@ for(var l=9; l>0; l--){
 resultArr.sort(function(a,b){return b-a});
 console.log(resultArr);
 		</code></pre>
+		<h2>Solution 2</h2>
+		<pre><code class="language-javascript">
+var a = 0;
+var b = 0;
+var c = 0;
+var largestPalindrome = 0;
+function reverse(num){
+	var reversed = 0
+	while(num > 0){
+		reversed = reversed * 10 + num%10;
+		num = Math.floor(num / 10);
+	}
+	return reversed;
+}
+function isPalindrome(num){
+	return num == reverse(num);
+}
+
+a = 999;
+while(a >= 100){
+	b = 999;
+	while(b >= 100) {
+		c = a * b;
+		if(isPalindrome(c) && c > largestPalindrome){
+			largestPalindrome = c;
+		}
+		b--;
+	}
+	a--;
+}
+
+console.log(largestPalindrome);		
+		</code></pre>
+		<h2>Solution 3</h2>
+		<pre><code class="language-javascript">
+var a = 0;
+var b = 0;
+var c = 0;
+var largestPalindrome = 0;
+function reverse(num){
+	var reversed = 0
+	while(num > 0){
+		reversed = reversed * 10 + num%10;
+		num = Math.floor(num / 10);
+	}
+	return reversed;
+}
+function isPalindrome(num){
+	return num == reverse(num);
+}
+
+a = 999;
+while(a >= 100){
+	b = a; //在上一个算法中，每一个乘机都算了两遍：如a = 236, b = 135和a = 135, b = 236，为了避免重复计算，这里可以设置为b = a; 使b一直小于等于a，同样可以获得所有乘机
+	while(b >= 100) {
+		c = a * b;
+		if(isPalindrome(c) && c > largestPalindrome){
+			largestPalindrome = c;
+		}
+		b--;
+	}
+	a--;
+}
+
+console.log(largestPalindrome);		
+		</code></pre>
+		<h2>Solution 4</h2>
+		<pre><code class="language-javascript">
+var a = 0;
+var b = 0;
+var c = 0;
+var largestPalindrome = 0;
+function reverse(num){
+	var reversed = 0
+	while(num > 0){
+		reversed = reversed * 10 + num%10;
+		num = Math.floor(num / 10);
+	}
+	return reversed;
+}
+function isPalindrome(num){
+	return num == reverse(num);
+}
+
+a = 999;
+while(a >= 100){
+	b = 999;
+	while(b >= a) {
+		c = a * b;
+		if(c &lt;= largestPalindrome){
+			break;
+		}
+
+		if(isPalindrome(c)){
+			largestPalindrome = c;
+		}
+		b--;
+	}
+	a--;
+}
+
+console.log(largestPalindrome);	
+		</code></pre>
+		<h2>Solution 5</h2>
+		<pre><code class="language-javascript">
+var a = 0;
+var b = 0;
+var c = 0;
+var largestPalindrome = 0;
+function reverse(num){
+	var reversed = 0
+	while(num > 0){
+		reversed = reversed * 10 + num%10;
+		num = Math.floor(num / 10);
+	}
+	return reversed;
+}
+function isPalindrome(num){
+	return num == reverse(num);
+}
+
+/*p = 100000x + 10000y + 1000z + 100z + 10y + x
+p = 100001x + 10010y + 1100z
+p = 11(9091x + 910y + 100z) */
+
+//从上述推导看来，p一定能被11整除，因此a、b两数里面，至少有一个能被11整除
+
+a = 999;
+while(a >= 100){
+	if (a%11 == 0){
+		b = 999;
+		db = 1;
+	} else {
+		b = 990; //小于等于999的最大能被11整除的数是990
+		db = 11;
+	}
+	while(b >= a) {
+		c = a * b;
+		if(c &lt;= largestPalindrome){
+			break;
+		}
+
+		if(isPalindrome(c)){
+			largestPalindrome = c;
+		}
+		b = b - db;
+	}
+	a = a - 1;
+}
+
+console.log(largestPalindrome);
+		</code></pre>
 	</div>
 </body>
 </html>
