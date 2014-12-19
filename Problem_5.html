@@ -15,12 +15,33 @@
 			<p>2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.</p>
 			<p>What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?</p>
 			<hr>
-			<p>2520是能够被1到10这十个数字整除最小数字。</p>
-			<p>请问能够被1至20这二十个数字除尽的最小正整数是多少？</p>
+			<p>2520是能够被1到10这十个数字整除的最小公倍数。</p>
+			<p>请问能够被1至20这二十个数字除尽的最小正公倍数是多少？</p>
 		</div>
 		<h2>Solution 1</h2>
 		<pre><code class="language-javascript">
+//最基本和直接的思路
+var n = 20;
+var i;
+var count = 0
 
+function divisible(num){ //判断某数是否能够整除1-20
+	for(var i=1; i&lt;=20; i++){
+		if(num%i != 0) {
+			return false;
+		}
+	}
+	return true;
+}
+
+while(n >= 20){
+	if(divisible(n)){
+		console.log(n);
+		break;
+	} else {
+		n++;
+	}
+}
 		</code></pre>
 	</div>
 </body>
