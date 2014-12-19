@@ -195,6 +195,77 @@ while(a >= 100){
 
 console.log(largestPalindrome);
 		</code></pre>
+		<h2>Solution 6</h2>
+		<code><pre>
+//临时变量
+var a,b;
+//最大对称数
+var maxPalindrome = 0;
+//结果：两个三位数
+var x,y;
+//判断是否对称数
+function isPalindrome(num){
+	var p=num;
+	var n=0;
+	while(p>0){
+		n=n*10+p%10;
+		p=Math.floor(p/10);
+	}
+	return num==n;
+}
+//先找符合要求的6位对称数
+a=990;
+while(a>=110){
+	var c;
+	var b_min=Math.ceil(100001/a); //100001是最小的一个六位数对称数
+	b=999;
+	while(b>=b_min) {
+		if(b%11!=0){
+			c=a*b;
+			//var str = 'a: ' + a + '; b: ' + b;
+			//console.log(str);
+			if(c&lt;=maxPalindrome){
+				break;
+			}
+			if(isPalindrome(c)){
+				maxPalindrome=c;
+				x=a;
+				y=b;
+			}
+		}
+		b--;
+	}
+	a-=11;
+}
+//符合要求的6位对称数没有，开始找符合要求的5位对称数
+if(maxPalindrome==0){
+	a=999;
+	while(a>=100){
+		var b_max=Math.floor(99999/a);
+		b=a; 
+		while(b>=100 && b&lt;=b_max) {
+			c=a*b;
+			if(c&lt;=maxPalindrome){
+				break;
+			}
+			if(isPalindrome(c)){
+				maxPalindrome=c;
+				x=a;
+				y=b;
+			}
+			b--;
+		}
+		a--;
+	}
+}
+//输出结果
+if(maxPalindrome!=0){
+	var str = '两个三位数相乘得到的最大对称数为：' + maxPalindrome + '\n' + '两数分别为' + x + '和' + y; 
+	console.log(str);
+} else {
+	console.log('两个三位数相乘不存在对称数乘积。');
+}		
+		</code></pre>
 	</div>
 </body>
 </html>
