@@ -42,6 +42,37 @@ while(n >= 20){
 	}
 }
 		</code></pre>
+		<h2>Solution 2</h2>
+		<pre><code class="language-javascript">
+function largestDiv(a, b){ //用辗转相除法求两个数的最大公因数
+	if(a == b || a % b == 0){
+		return b;
+	} else if(a > b){
+		var c = a % b;
+		a = b;
+		b = c;
+		return largestDiv(a, b);
+	} else if(a &lt; b){
+		return largestDiv(b, a);
+	}
+}
+
+function smallestMul(a, b){ //两数的乘积等于两数最大公约数和最小公倍数的乘积，通过此规律求最小公倍数
+	return a * b / largestDiv(a, b);
+}
+
+// 通过迭代方式求1至20的最小公倍数
+// 1至3要求1、2和1、2的公倍数与3的公倍数，那么1至20就要迭代19次
+function toSolve(){
+	var re = smallestMul(1, 2);
+	for(var i=1; i&lt;=18; i++){
+		re = smallestMul(re, i+2);
+	}
+	return re;
+}
+
+console.log(toSolve());		
+		</code></pre>
 	</div>
 </body>
 </html>
