@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Problem 6</title>
+	<link rel="stylesheet" href="res/style.css">
+	<link rel="stylesheet" href="res/prism.css">
+	<script src="res/prism.js"></script>
+</head>
+<body>
+	<h1>Sum square difference</h1>
+	<div id="wrap">
+		<h2>Problem 6</h2>
+		<div class="problem">
+			<p>The sum of the squares of the first ten natural numbers is,</p>
+			<p class="textCenter">1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</p>
+			<p>The square of the sum of the first ten natural numbers is,</p>
+			<p class="textCenter">(1 + 2 + ... + 10)<sup>2</sup> = 55<sup>2</sup> = 3025</p>
+			<p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 − 385 = 2640.</p>
+			<p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
+			<hr>
+			<p>前十个自然数的平方之和为：</p>
+			<p class="textCenter">1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</p>
+			<p>前十个自然数之和的平方为：</p>
+			<p class="textCenter">(1 + 2 + ... + 10)<sup>2</sup> = 55<sup>2</sup> = 3025</p>
+			<p>和的平方与平方的和之间的差值为3025 − 385 = 2640。</p>
+			<p>求前100个自然数和的平方与平方的和之间的差值。</p>
+		</div>
+		<h2>Solution 1</h2>
+		<pre><code class="language-javascript">
+var sum1 = 0;
+var sum2_root = 0;
+var sum2 = 0;
+//最简单粗暴的解法
+for(var i=1; i&lt;=100; i++){
+	sum1 += Math.pow(i, 2);
+	sum2_root += i;
+}
+sum2 = Math.pow(sum2_root, 2);
+console.log(sum2 - sum1);
+		</code></pre>
+	</div>
+</body>
+</html>
