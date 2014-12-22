@@ -73,6 +73,39 @@ function toSolve(){
 
 console.log(toSolve());		
 		</code></pre>
+		<h2>Solution 3</h2>
+		<pre><code class="language-javascript">
+var arr = []; //用于存放20以下的质数
+var result = 1; //用于存放答案
+function isPrime(num){ //判断是否为素数
+	for(var i=2; i&lt;=Math.ceil(num/2);i++){
+		if(num%i == 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+for(var i=2; i&lt;=20; i++){
+	if(isPrime(i)){
+		arr.push(i);
+	}
+} //获得小于等于20的质数组成的数组
+
+//2^4=16，2^5=32，因此1~20的最小公倍数肯定有四个2因子，而不能超过4个。同理3^2=9，3^3=27，那么1~20的最小公倍数肯定有两个3因子。总结下来 质数Z^n次方=K，K要小于20。等式两边同取log得到：log(Z^n)=log(K) => n*log(Z)=logK => n=log(K)/log(Z) = Math.floor(log(20)/log(Z))。
+//另外，根据上式也可以得到：如果质数Z大于20的平方根的话，那么该质数在1~20的最小公倍数的因子里面只能出现1次。
+
+for(var i=0; i&lt;arr.length; i++){
+	if(arr[i]&lt;Math.sqrt(20)){
+		n = Math.floor(Math.log(20)/Math.log(arr[i]))
+		result *= Math.pow(arr[i], n);
+	} else {
+		result *= arr[i];
+	}
+}
+
+console.log(result);		
+		</code></pre>
 	</div>
 </body>
 </html>
