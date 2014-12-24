@@ -39,6 +39,21 @@ for(var i=1; i&lt;=100; i++){
 sum2 = Math.pow(sum2_root, 2);
 console.log(sum2 - sum1);
 		</code></pre>
+		<h2>Solution 1</h2>
+		<pre><code class="language-javascript">
+var sumAll = 0;
+var result = 0;
+
+for(var i=1; i&lt;=100; i++){
+	sumAll += i;
+}
+
+for(var i=1; i&lt;=100; i++){
+	result += i*(sumAll-i);
+}
+
+console.log(result);		
+		</code></pre>
 	</div>
 </body>
 </html>
