@@ -106,6 +106,36 @@ for(var i=0; i&lt;arr.length; i++){
 
 console.log(result);		
 		</code></pre>
+		<h2>Solution 4</h2>
+		<pre><code class="language-javascript">
+function findQ(n){
+	var Q=1;
+	var P=new Array();
+	var i,j;
+	for(i=2;i&lt;=n;i++){
+    	P[i] = i;
+ 	}
+ 	for(i=2;i&lt;=n;i++){
+    	if(P[i]){
+    		for(j=i;j*i&lt;=n;j++){
+            	P[i*j]=0;
+          	}
+    	}
+	}
+	for(i=2;i&lt;=n;i++) {
+    	if(P[i]) {
+    		if(P[i]&lt;Math.sqrt(n)){
+				Q*= Math.pow(P[i], Math.floor(Math.log(n)/Math.log(P[i])));
+			} else {
+				Q*=P[i];
+			}
+     	} 
+    }
+    return Q;
+}			
+//输出结果
+console.log(findQ(20));		
+		</code></pre>
 	</div>
 </body>
 </html>
