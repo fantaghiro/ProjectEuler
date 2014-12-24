@@ -39,7 +39,7 @@ for(var i=1; i&lt;=100; i++){
 sum2 = Math.pow(sum2_root, 2);
 console.log(sum2 - sum1);
 		</code></pre>
-		<h2>Solution 1</h2>
+		<h2>Solution 2</h2>
 		<pre><code class="language-javascript">
 var sumAll = 0;
 var result = 0;
@@ -53,6 +53,13 @@ for(var i=1; i&lt;=100; i++){
 }
 
 console.log(result);		
+		</code></pre>
+		<h2>Solution 3</h2>
+		<pre><code class="language-javascript">
+var n = 100;
+var sum1_root = n*(n+1)/2; //1~n的和
+var sum2 = (2*n + 1)*(n + 1)*n / 6; //1~n的平方的和
+console.log(Math.pow(sum1_root, 2) - sum2);
 		</code></pre>
 	</div>
 </body>
