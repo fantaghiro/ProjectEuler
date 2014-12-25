@@ -136,6 +136,31 @@ function findQ(n){
 //输出结果
 console.log(findQ(20));		
 		</code></pre>
+		<h2>Solution 5</h2>
+		<pre><code class="language-javascript">
+function findQ(n){
+	var Q=1;
+	var P=new Array();
+	var i,j;
+	for(i=2;i&lt;=n;i++){
+    	P[i] = i;
+ 	}
+ 	for(i=2;i&lt;n;i++){  
+		for(j=i+1;j&lt;=n;j++){  
+    		if(P[j]%P[i]==0){
+        		P[j]=P[j]/P[i];
+    		}  
+		}
+	}
+	for(i=2;i&lt;=n;i++){
+		Q*=P[i];
+	}
+	return Q;
+}
+
+//输出结果
+console.log(findQ(20));		
+		</code></pre>
 	</div>
 </body>
 </html>
