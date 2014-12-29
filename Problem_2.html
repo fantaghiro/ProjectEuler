@@ -34,7 +34,7 @@ function fibonacci(idx){
 
 function sum(){
 	var all = 0;
-	for(var i=0; i<4000000; i++){
+	for(var i=0; i&lt;4000000; i++){
 		var num = fibonacci(i);
 		if(num > 4000000){
 			return all;
@@ -93,7 +93,7 @@ var a = 2;
 var b = 8;
 var c = 4*b + a;
 
-while(c < 4000000){
+while(c &lt; 4000000){
 //1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
 //其中偶数为2, 8, 34, 144
 //Even(n) = Even(n-1)*4 + Even(n-2)：如34 = 4*8 + 2以此类推
