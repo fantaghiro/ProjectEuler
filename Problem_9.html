@@ -27,7 +27,27 @@
 		</div>
 		<h2>Solution 1</h2>
 		<pre><code class="language-javascript">
-			
+//根据已知条件可以推导出：
+//a + b = 500 + a * b / 1000;
+//因为a、b均为自然数，最终推导可得：
+//a * b = m (其中m是1000的倍数)
+//a + b = 500 + m / 1000
+//假设a、b中其中一个数可被5整除为x，那么另一个数就为m / x，c为500 - m / 1000；后用枚举法得出结果
+
+for(var m = 1000; m &lt; 1000000; m+=1000){
+	for(var x = 5; x &lt;= 1000; x+=5){
+		var y =  m / x ;
+		var y2 = y + '';
+		var z = 500 - m / 1000;
+		var re = /^[0-9]*[1-9][0-9]*$/; //正则检验正整数
+
+		if(re.test(y2)){
+			if(Math.pow(x, 2) + Math.pow(y, 2) == Math.pow(z, 2)){
+				console.log(x, y, z, x*y*z);
+			}
+		}
+	}
+}			
 		</code></pre>
 	</div>
 </body>
