@@ -20,8 +20,8 @@
 		</div>
 		<h2>Solution 1</h2>
 		<pre><code class="language-javascript">
-var n = 1;
-var sum = 0;
+var n = 5; //已知2、3为质数
+var sum = 5; //已知2、3的和为5
 
 //这种判断质数的方法，详见Problem 7 Solution 2的解释
 function isPrime(n){
@@ -54,7 +54,11 @@ while(n &lt; 2000000 ){
 	if(isPrime(n)){
 		sum += n;
 	}
-	n++;
+	n+=2;
+	if((n&lt;2000000)&&(isPrime(n))){
+		sum += n;
+	}
+	n+=4;
 }
 
 console.log(sum);
