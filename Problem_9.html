@@ -49,6 +49,17 @@ for(var m = 1000; m &lt; 1000000; m+=1000){
 	}
 }			
 		</code></pre>
+		<h2>Solution 2</h2>
+		<pre><code class="language-javascript">
+for(var a=1; a&lt;1000; a++){
+	for(var b=1; b&lt;1000; b++){
+		var c = 1000 - a - b;
+		if((Math.pow(a, 2) + Math.pow(b, 2)) == Math.pow(c, 2)){
+			console.log(a, b, c, a*b*c);
+		}
+	}
+}		
+		</code></pre>
 	</div>
 </body>
 </html>
