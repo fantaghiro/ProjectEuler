@@ -40,10 +40,30 @@
 				<strong>28:</strong> 1, 2, 4, 7, 14, 28<br>
 			</p>
 			<p>我们可以看到，28是第一个有五个因数的三角数。</p>
-			<p>那么请问，第一个有500个因数的三角数是多少？</p>
+			<p>那么请问，第一个有多于500个因数的三角数是多少？</p>
 		</div>
 		<h2>Solution 1</h2>
 		<pre><code class="language-javascript">
+//第n个三角数就是1 + 2 + ... + n的和，因此第n个三角数就是 (1+n)*n/2
+//以下这种算法非常的耗时
+
+var count = 0;
+
+cal: for(var n=1; ; n++){
+	var sum = (1+n)*n/2;
+	var div = 1;
+	count = 0;
+	while(div &lt;= sum){
+		if(sum%div == 0){
+			count++;
+		}
+		div++;
+	}	
+	if(count >= 500){
+		console.log(sum);
+		break cal;
+	}
+}		
 		</code></pre>
 	</div>
 </body>
