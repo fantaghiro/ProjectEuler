@@ -160,7 +160,36 @@ window.onload = function(){
 
 }		
 		</code></pre>
-		
+		<h2>Solution 2</h2>
+		<pre><code class="language-javascript">
+window.onload = function(){
+
+	var numCount = 100;
+	var numLength = 50;
+	var numList = document.getElementById('numList').innerHTML.substring(1).split('<br>\n');
+	var sum = 0;
+
+	numList.pop(); //把最后空的那一项删去
+
+	//如果个位都是9，,100位加起来就是900。
+	//个位对10位的影响是90
+	//个位对百位的影响是9
+	//个位对千位的影响是0.9
+	//个位对万位的影响是0.09，这里的影响已经微乎其微了
+
+	//要计算出100个50位数字加和的前十位数，那么只计算其前14位就差不多了
+	for(var i=0; i&lt;numList.length; i++){
+		numList[i] = numList[i].substring(0, 13);
+	}
+
+	for(var i=0; i&lt;numList.length; i++){
+		sum += parseInt(numList[i]);
+	}
+
+	console.log(sum);
+
+}
+		</code></pre>
 	</div>
 </body>
 </html>
